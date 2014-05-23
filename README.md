@@ -27,12 +27,14 @@ Running `grunt grunt-bootstrap-prefix`
 ```js
 // Project configuration.
 grunt.initConfig({
-   bootstrap-prefix: {
-      options: {
-          cssPath: 'lib/bootstrap/css',   //(Required) Path to the folder where are located the bootstrap CSS files
-          cssDest: 'public/bootstrap/css', //(Required) Path to the folder where will be created the prefixed CSS files
-          jsPath: 'lib/bootstrap/js', //(Optional) Path to the folder where are located the bootstrap JS files
-          jsDest: 'public/bootstrap/js' //(Optional) Path to the folder where will be created the prefixed JS files
+   bootstrap_prefix: {
+      my_bootstrap{
+          options: {
+              cssPath: 'lib/bootstrap/css',   //(Required) Path to the folder where are located the bootstrap CSS files
+              cssDest: 'public/bootstrap/css', //(Required) Path to the folder where will be created the prefixed CSS files
+              jsPath: 'lib/bootstrap/js', //(Optional) Path to the folder where are located the bootstrap JS files
+              jsDest: 'public/bootstrap/js' //(Optional) Path to the folder where will be created the prefixed JS files
+          }
       }
    }
 });
