@@ -22,7 +22,7 @@ module.exports = function (grunt) {
       }),
       callback = _.isFunction(options.callback) ? options.callback : function () {
       },
-      pythonCommand = 'python tasks/bootstrap_prefix.py -c %s -d %s',
+      pythonCommand = 'python ' + __dirname + '\\bootstrap_prefix.py' + ' -c %s -d %s',
       done = this.async(),
       stdout = options.stdout !== undefined ? options.stdout : true,
       stderr = options.stderr !== undefined ? options.stderr : true;
