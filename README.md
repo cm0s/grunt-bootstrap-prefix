@@ -1,6 +1,8 @@
 grunt-bootstrap-prefix
 ================
 
+[![Build Status](https://travis-ci.org/cm0s/grunt-bootstrap-prefix.svg?branch=master)](https://travis-ci.org/cm0s/grunt-bootstrap-prefix)
+
 > Prefix Bootstrap classes by modifying the compiled css and js files
 
 This task use a python script to perform the class prefixing.
