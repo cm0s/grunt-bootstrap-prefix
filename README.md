@@ -3,7 +3,7 @@ grunt-bootstrap-prefix
 
 [![Build Status](https://travis-ci.org/cm0s/grunt-bootstrap-prefix.svg?branch=master)](https://travis-ci.org/cm0s/grunt-bootstrap-prefix)
 
-> Prefix Bootstrap classes by modifying the compiled css and js files
+> Prefix Bootstrap classes located in the css and also in the js files
 
 This task use a python script to perform the class prefixing.
 The original python script has been created by Francois Aucamp ([git repo](https://github.com/faucamp/bootstrap_namespace_prefixer))

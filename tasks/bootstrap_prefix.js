@@ -15,7 +15,7 @@ module.exports = function (grunt) {
     exitCodes = [0, 127],
     log = grunt.log;
 
-  grunt.registerMultiTask('bootstrap_prefix', 'Prefix Bootstrap classes by modifying the compiled css and js files', function () {
+  grunt.registerMultiTask('bootstrap_prefix', 'Prefix Bootstrap classes located in the css and also in the js files', function () {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
         execOptions: {}
