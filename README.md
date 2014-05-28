@@ -30,10 +30,19 @@ grunt.initConfig({
    bootstrap_prefix: {
       my_bootstrap{
           options: {
-              cssPath: 'lib/bootstrap/css',   //(Required) Path to the folder where are located the bootstrap CSS files
-              cssDest: 'public/bootstrap/css', //(Required) Path to the folder where will be created the prefixed CSS files
-              jsPath: 'lib/bootstrap/js', //(Optional) Path to the folder where are located the bootstrap JS files
-              jsDest: 'public/bootstrap/js' //(Optional) Path to the folder where will be created the prefixed JS files
+              // (Required) List of bootstrap CSS file(s). The first file must be the main bootstrap CSS file. The
+              // script parse it to retrieve all the bootstrap CSS classes which are then used to prefix the JS file(s).
+              // It's also possible to put minified CSS files in the list.
+              cssSource: ['lib/bootstrap/css/bootstrap.css','lib/bootstrap/css/bootstrap-theme.css'],
+
+              //(Required) Path to the folder where the prefixed CSS files will be created
+              cssDest: 'public/bootstrap/css',
+
+              //(Optional) List of bootstrap JS file(s). It's also possible to put minified files in the list.
+              jsSource: ['lib/bootstrap/js/bootstrap.js],
+
+              //(Optional) Path to the folder where the prefixed JS file(s) will be created
+              jsDest: 'public/bootstrap/js'
           }
       }
    }

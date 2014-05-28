@@ -41,15 +41,15 @@ module.exports = function (grunt) {
     bootstrap_prefix: {
       default_options: {
         options: {
-          cssPath: 'test/fixtures',
+          cssSource: ['test/fixtures/bootstrap.css', 'test/fixtures/bootstrap.min.css'],
           cssDest: 'tmp/default_options'
         }
       },
       custom_options: {
         options: {
-          cssPath: 'test/fixtures',
+          cssSource: ['test/fixtures/bootstrap.css', 'test/fixtures/bootstrap.min.css'],
           cssDest: 'tmp/custom_options',
-          jsPath: 'test/fixtures',
+          jsSource: ['test/fixtures/bootstrap.js', 'test/fixtures/bootstrap.min.js'],
           jsDest: 'tmp/custom_options'
         }
       }

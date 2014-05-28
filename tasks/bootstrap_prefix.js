@@ -27,10 +27,10 @@ module.exports = function (grunt) {
       stdout = options.stdout !== undefined ? options.stdout : true,
       stderr = options.stderr !== undefined ? options.stderr : true;
 
-    log.write(options.cssPath + '--' + options.cssDest);
+    log.write(options.cssSource + '--' + options.cssDest);
 
-    if (!options.cssPath) {
-      log.error('cssPath option must be defined');
+    if (!options.cssSource) {
+      log.error('cssSource option must be defined');
     }
     if (!options.cssDest) {
       log.error('cssDest option must be defined');
@@ -40,8 +40,13 @@ module.exports = function (grunt) {
     grunt.file.mkdir(options.cssDest);
 
     //Add optional parameters if options are not empty
-    if (options.jsPath) {
-      pythonCommand += ' -j ' + options.jsPath;
+    if (options.jsSource) {
+      var jsFilePaths = "";
+      _.forEach(options.jsSource, function (jsFilePath) {
+        jsFilePaths += jsFilePath + " ";
+      });
+
+      pythonCommand += ' -j ' + jsFilePaths;
     }
     if (options.jsDest) {
       pythonCommand += ' -t ' + options.jsDest;
@@ -52,7 +57,12 @@ module.exports = function (grunt) {
       pythonCommand += ' -p ' + options.prefix;
     }
 
-    var childProcess = child_process.exec(format(pythonCommand, options.cssPath, options.cssDest), options.execOptions, callback);
+    var cssFilePaths = "";
+    _.forEach(options.cssSource, function (cssFilePath) {
+      cssFilePaths += cssFilePath + " ";
+    });
+
+    var childProcess = child_process.exec(format(pythonCommand, cssFilePaths, options.cssDest), options.execOptions, callback);
     if (stdout) {
       childProcess.stdout.on('data', function (d) {
         log.write(d);

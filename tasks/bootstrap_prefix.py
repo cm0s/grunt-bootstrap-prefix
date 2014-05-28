@@ -51,7 +51,7 @@ def processCss(cssFilename):
         f.close()
         processedFilename = os.path.splitext(os.path.basename(cssFilename))[0] + '.prefixed.css'
         processedFilenamePath = os.path.normpath(os.path.join(args.cssdest, processedFilename))
-        f = open(processedFilenamePath, 'w')
+        f = open(processedFilenamePath, 'wb')
         processedCss = CSS_CLASS_REGEX.sub(r'.%s\1' % cssClassPrefix, css)
         processedCss = CSS_CLASS_ATTRIBUTE_SELECTOR_REGEX.sub(r'\1%s\2\3' % cssClassPrefix, processedCss)
         f.write(processedCss)
@@ -152,7 +152,7 @@ def processJs(jsFilename, cssClassNames):
         # Write the output file
         processedFilename = os.path.splitext(os.path.basename(jsFilename))[0] + '.prefixed.js'
         processedFilenamePath = os.path.normpath(os.path.join(args.jsdest, processedFilename))
-        f = open(processedFilenamePath, 'w')
+        f = open(processedFilenamePath, 'wb')
         f.write(js)
         f.close()
         print(' |-> Prefixed file written to: ' + processedFilenamePath)
@@ -161,11 +161,13 @@ def processJs(jsFilename, cssClassNames):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Bootstrap namespace prefixer')
-    parser.add_argument('-c', '--csssource', help='Path to the folder where are located the Bootstrap css file',
+    parser.add_argument('-c', '--csssource', nargs='*',
+                        help='Path to the bootstrap css file(s). This argument accept multiple values',
                         required=True)
     parser.add_argument('-d', '--cssdest', help='Path to the folder where the prefixed css files will be created',
                         required=True)
-    parser.add_argument('-j', '--jssource', help='Path to the folder where are located the Bootstrap js file',
+    parser.add_argument('-j', '--jssource', nargs='*',
+                        help='Path to the bootstrap js file(s). This argument accept multiple values',
                         required=False)
     parser.add_argument('-t', '--jsdest', help='Path to the folder where the prefixed js files will be created',
                         required=False)
@@ -184,9 +186,8 @@ if __name__ == '__main__':
         cssClassPrefix = args.prefix
 
     cssClassNames = None
-    for cssFile in ('bootstrap.css', 'bootstrap.min.css', 'bootstrap-responsive.css', 'bootstrap-responsive.min.css',
-                    'bootstrap-theme.css', 'bootstrap-theme.min.css'):
-        cssFilePath = os.path.normpath(os.path.join(args.csssource, cssFile))
+
+    for cssFilePath in args.csssource:
         processCss(cssFilePath)
         if cssClassNames == None:
             cssClassNames = collectCssClassnames(cssFilePath)
@@ -194,8 +195,7 @@ if __name__ == '__main__':
     if cssClassNames != None:
         cssClassNames.update(ADDITIONAL_CSS_CLASSES_IN_JS)
         if args.jssource and args.jsdest:
-            for jsFile in ('bootstrap.js', 'bootstrap.min.js'):
-                jsFilePath = os.path.normpath(os.path.join(args.jssource, jsFile))
+            for jsFilePath in args.jssource:
                 processJs(jsFilePath, cssClassNames)
     else:
         print('Failed to collect CSS class names - cannot modify JavaScript source files as a result')
