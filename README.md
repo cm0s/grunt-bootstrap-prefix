@@ -39,7 +39,7 @@ grunt.initConfig({
               cssDest: 'public/bootstrap/css',
 
               //(Optional) List of bootstrap JS file(s). It's also possible to put minified files in the list.
-              jsSource: ['lib/bootstrap/js/bootstrap.js],
+              jsSource: ['lib/bootstrap/js/bootstrap.js'],
 
               //(Optional) Path to the folder where the prefixed JS file(s) will be created
               jsDest: 'public/bootstrap/js'
