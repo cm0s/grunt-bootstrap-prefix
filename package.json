@@ -1,7 +1,7 @@
 {
   "name": "grunt-bootstrap-prefix",
   "description": "Prefix Bootstrap classes located in the css and also in the js files",
-  "version": "0.1.0",
+  "version": "0.2.0-snapshot",
   "homepage": "https://github.com/cm0s/grunt-bootstrap-prefix",
   "author": {
     "name": "Nicolas Forney",
